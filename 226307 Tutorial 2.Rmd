@@ -1,0 +1,156 @@
+---
+title: "226307 Datenkompetenz 2: RMarkdown"
+author: "Swaran Sandhu | sandhu@hdm-stuttgart.de"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Lernziele
+In diesem __Selbstlern-Tutorial 2 __ lernen Sie  
+- was RMarkdown ist,  
+- wie man eine R-Markdown-Datei erstellt,  
+- welche Funktionen der Header hat,  
+- wie Code in einem RNotebook ausgeführt wird,  
+- wie das Paket knitR die Dokumenterstellung vereinfacht, 
+- Addin-Remedy für schnelleres Arbeiten
+
+## RMarkdown erklärt
+
+R Markdown ist eine einfache Auszeichnungssprache, mit der sich R Code bearbeiten läßt. Das Ergebnis kann als HTML, PDF oder Word Dokument exportiert werden. 
+
+Es muss das Paket “rmarkdown” installiert werden und R Markdown kann nur über die Oberfläche RStudio genutzt werden. 
+
+Es ist ein Dokument, in dem sowohl Text, wie auch Code sein kann:
+<br> - Forschung wird reproduzierbar.
+<br> - Leichterer Austausch von Analyseergebnissen und der zugehorigen Dokumentation. ¨
+<br> - Beim Erstellen (“knit”) wird der Code ausgeführt und mit den Beschreibungen zusammen angezeigt.
+
+### Wie erstellt man eine RMarkdown-Datei
+
+Um eine neue Markdowndatei anzulegen starten Sie RStudio und gehen über `File —> New File —> R Markdown`
+
+Geben Sie der Datei einen Namen, z.B. “Test”
+Wählen Sie ein Format aus (z.B. HTML)
+Click ok - Es wird eine Datei names “Test.Rmd” erzeugt.
+
+![Neues Markdown](https://github.com/thomas5nolte/Tutorials/blob/master/Neues_Projekt.jpg?raw=true)
+
+### Wie funktioniert RMarkdown?
+
+Die von RStudio erzeugte Datei ist weitgehend selbsterklärend. Z.B. muss R Code (R Code Chunk) immer mit drei Anführungszeichen (backticks) beginnen und enden. So ein Code Chunk ist grau unterlegt. Jeder Code Chunk sollte jeweils einen eindeutigen Namen tragen wie z.B. VORBEREITUNG. Vor dem Code Chunk muss ein “r” stehen. Dies signalisiert dem Sytem, dass der Code in Programmiersprache “R” ist. “r VORBEREITUNG=TRUE” gibt dann an, dass der Code Chunk auch in erzeugten Datei (Word, HTML oder PDF) dargestellt wird.
+
+Die Rmd Datei wird dann durch click auf “Knit HTML” (oder Knit Word, Knit PDF) in eine HTML, Word oder PDF Datei umgewandelt.
+
+
+### YAML
+
+Die Kopfzeile (YAML) besteht aus Schlüssel-Wert-Paaren. Sie ist mit drei Bindestrichen (- - -) vom Rest des Dokumentes getrennt. 
+
+![YAML](https://github.com/thomas5nolte/Tutorials/blob/master/Header.JPG?raw=true)
+
+Mit dem Header können sie nicht nur den Titel oder den Autor definieren. 
+Sie können auch hier schon die spätere Ausgabe einstellen. 
+
+Ein paar Beispiele für mögliche Outputformate:
+
+|  output value |  creates|
+|--:|--:|
+|  html_document|   html|
+|  pdf_document|   pdf (benötigt das Paket: Tex )|
+|word_document| Microsoft Word (.docx)|
+|odt_document|OpenDocument Text|
+|rtf_document|Rich Text Format|
+|github_document|Github compatible markdown|
+|beamer_presentation|Beamer pdf slides (requires Tex)|
+
+### Add-in Remedy installieren und verwenden
+
+Mit dem RStudio-Plugin  [Remedy](https://thinkr-open.github.io/remedy/) lassen sich schnell und einfach RMarkdown-Dokumente formatieren. 
+Nach der Installation sind die Formatierungsbefehle in RStudio Addins hinterlegt. 
+
+Sie können Remedy entweder mit dem Befehl `remotes::install_github("ThinkR-open/remedy")` installieren, 
+oder Sie verwenden unten Rechts den Reiter Packages und installieren Remedy wie ein normales Paket.  
+
+![Paket installieren](https://github.com/thomas5nolte/Tutorials/blob/master/InkedInkedPaket_installieren_Cran.jpg?raw=true)
+
+Natürlich können Sie alle Befehle auch von Hand eingeben. Remedy erleichtert Ihnen die arbeit nur ungemein. 
+
+Einen kleinen Überlick zu den Formatierungsbefehlen von Markdown finden sie in folgendem Video: 
+
+![Formatierung Markdown](https://www.youtube.com/watch?v=u4ZdvYXjsIo&list=PLEzw67WWDg83weG3idsgy4wuOIJAashA2&index=6&t=0s){width="90%"}
+
+## RNotebooks verwenden
+
+### Header verwenden
+
+Um eine Überschrift in Markdown zu erzeugen, nutzt man standardmäßig eine Raute. Diese setzt man mit einem Leerzeichen Abstand vor den Text. Um Überschriften zu erstellen, die hierarchisch tiefer liegen und demnach kleiner geschrieben sind, setzen Sie zusätzliche Rauten ein. Auf diese Weise lassen sich wie in HTML Überschriften bis zur sechsten Stufe erstellen.
+
+![Formatierung Markdown](https://github.com/thomas5nolte/Tutorials/blob/master/Formatierung.JPG?raw=true)
+
+### Code-Cunks einsetzen 
+
+Innerhalb des eigentlichen Dokuments kann nun beschreibender Text als auch Code angelegt werden. Der Code wird
+in Blocken eingefügt, den sogenannten Chunks. Diese sehen wie folgt aus: ¨
+
+![Chunk](https://github.com/thomas5nolte/Tutorials/blob/master/Chunk.JPG?raw=true)
+
+Tipp: 
+Das Tastatur-Shortcut fur das Einfügen eines leeren Chunks lautet “Strg+Alt+ I” / "Command+ALT+I". Alternativ kann auch der ![](https://github.com/thomas5nolte/Tutorials/blob/master/Insert.JPG?raw=true) Button gedruckt werden.
+
+### Inhaltsverzeichnis
+
+Durch die Bezeichnungen in den Code-Chunks können bestimmte Abschnitte einfacher im Inhaltsverzeichnis gefunden werden. Außerdem bilden die Überschrift ein inhaltsverzeichnis. Dies ermöglicht es, komplette Forschungsberichte in einem Markdown Dokument zu schreiben und zu exportieren. Dies bietet den Vorteil, dass die Forschungsergebnisse nachvollziehbar sind und sich somit legitimieren. 
+
+Das Inhaltsverzichnis ist oberhalb der Konsole.
+
+![](https://github.com/thomas5nolte/Tutorials/blob/master/Inhaltsverzeichnis.JPG?raw=true)
+
+## Vertiefung: Mit Markdown das Studium überstehen:
+
+Sie werden immer wieder Daten zu tun haben. 
+R und RStudio bieten Ihnen ein starkes Tool, um diese Auszuwerten. 
+Außerdem heben Sie sich auf dem Arbeitsmarkt damit von anderen Studenten ab, was Ihnen einen Vorteil bietet.  
+
+
+Nützliche Links: 
+
+
+_Cheat-Sheet RMarkdown_
+https://rstudio.com/wp-content/uploads/2015/06/rmarkdown-german.pdf
+
+_Definitiv hilfreich zum Anschauen_
+https://rmarkdown.rstudio.com/lesson-1.html
+<br>
+
+
+Empfehlenswert als Ergänzung/Vorbereitung
+https://rstudio.com/resources/webinars/getting-started-with-r-markdown/
+<br>
+https://www.youtube.com/watch?v=u4ZdvYXjsIo
+<br>
+https://www.youtube.com/watch?v=hpAJMSS8pvs
+
+## Quiz
+
+__Bitte wählen Sie alle richtigen Möglichkeiten aus__
+
+```{r quiz, echo=FALSE}
+quiz(
+  question_checkbox(
+    "Wie wird eine Überschrift 2. Grades erstellt?",
+    answer("##", correct = TRUE),
+    answer("2."),
+    answer("II"),
+    answer("Immer die zweite Zeile in einem Chunk"),
+    random_answer_order = TRUE,
+    allow_retry = TRUE,
+    try_again = "Schauen Sie nochmal im Kapitel nach!"
+  )
+)
+```
+

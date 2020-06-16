@@ -1,0 +1,158 @@
+---
+title: "226307 Datenkompetenz 1: Grundlagen"
+author: "Swaran Sandhu | sandhu@hdm-stuttgart.de"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Lernziele
+In diesem __Selbstlern-Tutorium __ lernen Sie  
+- wie man Pakete installiert,  
+- eine Programmbibliothek aufruft,  
+- die Hilfefunktion in R nutzt,  
+- eine Working-Direktory anlegt,  
+- und ein R-Projekt anlegt.  
+
+## Aufbau RStudio
+
+R Studio ist die Entwicklungsumgebung von R. 
+In der Standardansicht ist RStudio in 4 Fenster augeteilt. 
+
+- __Skripte & Notebooks__
+  <br>
+  Zeigt die Ergebnisse des Outputs des Codes an
+- __Umgebung & History__
+  <br>
+  Arbeitsumgebung mit den eingelesenen Variablen
+  
+- __Files & Plots & Help__
+  <br>
+  Files sind die Dateien, mit denen Sie arbeiten. 
+  Plots werden Visualisierungen ausgegeben. 
+  Packages sind die Softwarepakete, welche Sie benötigen um tiefergehende Funktionen zu nutzen. 
+  <br>
+- __Konsole__
+  <br>
+  Entspricht der direkten Eingabe des Codes in R
+
+`Wer das Erscheinungsbild seines RStudio anpassen will kann das`
+`unter Tools —> Global Options —> Appearance machen.`
+
+
+![Aufbau RStudio ](https://vimeo.com/427721322){width="90%"}
+
+
+## Grundlegende Funktionen von R
+
+### Installation Pakete via CRAN
+
+
+RStudio wird mit Paketen genutzt, welche die Funktionen haben, die wir benötigen um mit den Daten zu arbeiten. 
+Sie müssen ein mal installiert werden, aber jedes mal bei einem Neustart von RStudio neu geladen werden. 
+
+Pakete können über verschiedene Wege installiert werden. 
+
+Der einfachste Weg ist, über den Reiter Packages. 
+
+![Paket installieren](https://github.com/thomas5nolte/Tutorials/blob/master/InkedInkedPaket_installieren_Cran.jpg?raw=true)
+
+`Dependencies: Um einige Pakete vollumfänglich benutzen zu können, müssen mehrere Pakete installiert werden.` 
+`Dafür muss der Haken bei "Install dependencies" aktiviert sein.`
+
+### Programmbibliotheken aufrufen
+
+Die installierten Pakete müssen nach jedem Neustart von RStudio neu geladen werden. 
+Dies geschieht über den Befehl `library()`
+
+```{r Bibliothek, exercise=TRUE}
+library(learnr)
+```
+
+### Hilfefunktionen in R nutzen
+
+Die Hilfefunktion in R eignet sich hervorragend um Befehle richtig herauszusuchen oder mögliche Anpassungen herauszufinden. 
+
+Die Hilfefunktion wird aufgerufen, indem ein Fragezeichen (?) direkt vor den Befehl geschrieben wird, zudem ihr Hilfe sucht. Mit einem Fragezeichen wird in den installierten Packeten nach Hilfe gesucht, findet er hier nichts, kann es sich lohnen zwei Fragezeichen vor den Befehl zu schreiben. Mit "??" wird das gesamte CRAN nach Hilfe durchsucht. 
+
+Die Ausgabe findet dann im Reiter __Help__ statt und beinhaltet meistens Beispielcode, an dem Sie sich langhangeln können. 
+
+```{r Hilfefunktion, exercise=TRUE}
+?rmarkdown
+??rmarkdown
+```
+
+
+### Working Directory anlegen
+
+R greift von hier aus auf Dateien zu. 
+Alles was Sie benutzen / einlesen wollen muss in der Working Directory abgelegt sein, sonst findet R es nicht. 
+
+Am einfachsten ändern Sie die WD über `Session —> Set Working Directory —> Choose Directory`
+
+![Working Directory](https://github.com/thomas5nolte/Tutorials/blob/master/WD.jpg?raw=true)
+
+Ihr könnt jederzeit herausfinden, wo eure WD gerade ist, mit dem Befehlt getwd()
+
+```{r Quiz}
+question_text(
+  "Mit welchem Befehl werden Pakete geladen",
+  answer("library()", correct = TRUE),
+  allow_retry = TRUE
+)
+
+```
+
+## R-Projekt anlegen
+
+Um ein neues Projekt anzulegen starten Sie RStudio und gehen über `File —> New File —> Notebook`
+
+![Working Directory](https://github.com/thomas5nolte/Tutorials/blob/master/Neues_Projekt.jpg?raw=true)
+
+Nun öffnet sich ein neues Projekt
+
+### RStudio konfigurieren
+
+Wie in den Kapiteln zuvor schon gelernt, müssen verwendete Packete installiert werden. 
+Für dieses Semester benötigen Sie zu Beginn erst einmal die Packete 
+- learnr
+- rmarkdown
+- knitr
+
+## Quiz
+
+__Bitte wählen Sie alle richtigen Möglichkeiten aus__
+
+```{r quiz, echo=FALSE}
+quiz(
+question(
+  "Wie können Pakete in RStudio installiert werden?",
+  answer("Über den Packagereiter", correct = TRUE),
+  answer("Über den Befehl 'install.packages(package)'", correct = TRUE),
+  answer("Über den Befehl 'library(package, dependencies = TRUE)'"),
+  answer("Über den Befehl 'install_packages(package)"),
+  answer("Über den Befehl 'library(package)'"),
+  answer("Gar nicht"),
+  random_answer_order = TRUE,
+  allow_retry = TRUE,
+  try_again = "Schauen Sie nochmal im Kapitel nach!"
+),
+question_checkbox(
+  "Mit welchem Befehl kann die Hilfefunktion aufgerufen werden?",
+  answer("Mit /help"),
+  answer("Mit ?", correct = TRUE),
+  answer("Wenn ich den Computer laut anschreie!"),
+  answer("Es gibt keine Hilfefunktion in RStudio"),
+  random_answer_order = TRUE,
+  allow_retry = TRUE,
+  try_again = "Schauen Sie nochmal im Kapitel nach!"
+)
+)
+```
+
+
+
